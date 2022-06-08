@@ -1,0 +1,22 @@
+name: Page Build
+on:
+  page_build
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:    
+      - name: dispatch for guru sync
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          repository: firebolt-db/firebolt-doc-to-guru
+          event-type: prod_build
+          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
+      - name: dispatch for staging sync
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          repository: firebolt-db/firebolt-doc-staging
+          event-type: prod_build
+          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
