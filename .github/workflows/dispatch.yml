@@ -14,7 +14,6 @@ jobs:
         run: |
           git config --global user.name github-actions
           git config --global user.email github-actions@github.com
-          git config pull.ff only  
       
       - name: Checkout Staging Target
         uses: actions/checkout@v2
@@ -24,6 +23,7 @@ jobs:
       
       - name: Push files to target
         run: |
+          git config pull.ff only;
           git checkout main;
           git pull https://github.com/molly-firebolt/shiny-garbanzo.git main;
           git push origin;
