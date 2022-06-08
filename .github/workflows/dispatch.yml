@@ -14,21 +14,15 @@ jobs:
         run: |
           git config --global user.name github-actions
           git config --global user.email github-actions@github.com
-          
-      - name: Checkout Repo
-        uses: actions/checkout@v2
-        with:
-          path: 'build'
       
       - name: Checkout Staging Target
         uses: actions/checkout@v2
         with:
           repository: molly-firebolt/fireboltdocs2guru
-          path: 'deploy'
           token: ${{ secrets.PAT }}
       
       - name: Push files to target
         run: |
           git checkout main;
-          git pull https://github.com/molly-firebolt/fireboltdocs2guru.git main;
+          git pull https://github.com/molly-firebolt/shiny-garbanzo.git main;
           git push origin;
