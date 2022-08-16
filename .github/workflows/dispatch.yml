@@ -25,7 +25,7 @@ jobs:
       - name: Build
         run: |
           cd build
-          git checkout gh-pages
+          git checkout main
           git pull ${{ github.head_ref }}
           git push origin
 
