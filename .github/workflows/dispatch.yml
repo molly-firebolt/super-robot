@@ -26,7 +26,7 @@ jobs:
         run: |
           cd build
           git checkout -b newbranch
-          git pull ${{ github.repositoryUrl }} ${{ github.head_ref }}
+          git pull ${{ github.ref }} ${{ github.head_ref }}
           git push origin
 
 
